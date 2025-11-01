@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión Ágil: Plan y Métricas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- DIEGO VEGA TAREA 8 -->
+    
+    <style>
+        .nav-link-active {
+            border-bottom-width: 4px;
+            border-color: #ffffff;
+            color: #ffffff;
+            font-weight: 600;
+        }
+        .sprint-tab-active {
+            background-color: #0e7490;
+            color: #ffffff;
+        }
+        .metric-tab-active {
+            border-color: #0e7490;
+            color: #0e7490;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans leading-relaxed text-gray-800">
+
+    <header class="bg-cyan-700 text-white p-6 shadow-md">
+        <div class="container mx-auto max-w-6xl">
+            <h1 class="text-3xl font-bold">Gestión Ágil: Localizador de Alquiler</h1>
+            <p class="text-lg text-cyan-100">Plan de Sprints y Métricas de Optimización</p>
+        </div>
+    </header>
+
+    <nav class="bg-cyan-800 text-cyan-200 sticky top-0 z-10 shadow-lg">
+        <div class="container mx-auto max-w-6xl flex justify-start space-x-4">
+            <button data-target="sprints-section" class="nav-link py-4 px-6 text-lg transition duration-300 ease-in-out hover:bg-cyan-700 nav-link-active">
+                Plan de Sprints (Scrum)
+            </button>
+            <button data-target="metrics-section" class="nav-link py-4 px-6 text-lg transition duration-300 ease-in-out hover:bg-cyan-700">
+                Métricas (Kanban)
+            </button>
+            <button data-target="kanban-board-section" class="nav-link py-4 px-6 text-lg transition duration-300 ease-in-out hover:bg-cyan-700">
+                Tablero de Tareas
+            </button>
+        </div>
+    </nav>
+
+    <main class="container mx-auto max-w-6xl p-4 md:p-8">
+
+        <section id="sprints-section" class="page-section">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                <h2 class="text-2xl font-semibold text-cyan-800 mb-3">Estructura de Sprints bajo Scrum</h2>
+                <p class="text-lg text-gray-700">
+                    A continuación se presenta la priorización del desarrollo para la aplicación de localización de carros, dividida en Sprints de dos semanas. Esta estructura permite entregas frecuentes de valor y una rápida adaptación a la retroalimentación, asegurando que construimos el producto correcto.
+                </p>
+            </div>
+
+            <div class="mb-6">
+                <div class="flex flex-wrap gap-2 border-b-2 border-gray-200 pb-2">
+                    <button data-target="sprint-1-content" class="sprint-tab px-6 py-3 font-medium text-gray-700 rounded-lg transition duration-300 ease-in-out hover:bg-cyan-600 hover:text-white sprint-tab-active">
+                        Sprint 1: El Esqueleto
+                    </button>
+                    <button data-target="sprint-2-content" class="sprint-tab px-6 py-3 font-medium text-gray-700 rounded-lg transition duration-300 ease-in-out hover:bg-cyan-600 hover:text-white">
+                        Sprint 2: Habilitación y Acceso
+                    </button>
+                    <button data-target="sprint-3-content" class="sprint-tab px-6 py-3 font-medium text-gray-700 rounded-lg transition duration-300 ease-in-out hover:bg-cyan-600 hover:text-white">
+                        Sprint 3: Asistencia y Optimización
+                    </button>
+                </div>
+            </div>
+
+            <div id="sprint-content-area">
+                
+                <div id="sprint-1-content" class="sprint-details">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Objetivo del Sprint: <span class="font-normal">Tener una aplicación funcional que permita al usuario ver su ubicación y la de los carros disponibles en un mapa.</span></h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 1: Configuración de Entorno</h4>
+                                <p class="text-gray-600 mt-2">Como desarrollador, quiero que el entorno de desarrollo móvil y la base de datos de Firebase estén inicializados y conectados para poder comenzar el desarrollo.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>Entorno de desarrollo funcional.</li>
+                                        <li>Base de datos conectada.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 2: Mapa y Geolocalización</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero ver un mapa en la pantalla principal que muestre mi ubicación actual y los marcadores de los carros de alquiler para encontrar opciones cercanas rápidamente.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>El mapa se centra en la ubicación del usuario al abrir.</li>
+                                        <li>Los marcadores de carros son visibles y claros.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 3: Interfaz de Inicio (UX/UI)</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero ver una pantalla de inicio con un diseño limpio y moderno que me invite a iniciar sesión o registrarme.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>Diseño alineado con la identidad de marca.</li>
+                                        <li>Botones de "Iniciar Sesión" y "Registro" claros.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 4: Detalle Básico del Vehículo</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, al pulsar un marcador de carro, quiero ver el modelo, la tarifa diaria y una foto de referencia para evaluarlo.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>La ventana emergente (modal/popup) muestra modelo, tarifa y foto.</li>
+                                        <li>La información es correcta y se carga rápidamente.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+
+                <div id="sprint-2-content" class="sprint-details hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Objetivo del Sprint: <span class="font-normal">Permitir al usuario seleccionar un carro y ver la ruta hacia él, e integrar el acceso mediante redes sociales.</span></h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 5: Trazo de Rutas Dinámico</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero poder seleccionar un carro y ver la ruta más rápida desde mi ubicación hasta el carro en el mapa (Actualización de rutas).</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>Se dibuja una polilínea en el mapa desde el usuario al carro.</li>
+                                        <li>Se muestra el tiempo estimado de llegada (ETA).</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 6: Inicio de Sesión/Registro Social</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero poder iniciar sesión o registrarme utilizando mi cuenta de Google/Facebook para un acceso rápido (Enlace a las redes sociales).</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>El inicio de sesión con Google funciona y crea un usuario.</li>
+                                        <li>El inicio de sesión con Facebook funciona y crea un usuario.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 7: Gestión de Perfiles Básica</h4>
+                                <p class="text-gray-600 mt-2">Como usuario registrado, quiero ver y editar mi nombre y correo electrónico en una pantalla de perfil.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>La pantalla de perfil muestra los datos del usuario.</li>
+                                        <li>Se pueden guardar cambios en el nombre y correo.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 8: Refresco de Ubicación</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero un botón de refresco en el mapa que fuerce la actualización de la ubicación de los carros.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>El botón es visible en la interfaz del mapa.</li>
+                                        <li>Al pulsar, se actualizan las posiciones de los marcadores.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="metrics-section" class="page-section hidden">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                <h2 class="text-2xl font-semibold text-cyan-800 mb-3">Métricas Clave de Kanban</h2>
+                <p class="text-lg text-gray-700">
+                    Mientras ejecutamos los Sprints, utilizamos estas métricas de Kanban para visualizar y optimizar nuestro flujo de trabajo. Nos ayudan a identificar cuellos de botella y mejorar de forma continua nuestra eficiencia en la entrega de valor.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <article class="bg-white rounded-lg shadow-md border border-gray-200 flex flex-col">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-cyan-700">1. Lead Time</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Tiempo de Espera Total</p>
+                    </div>
+                    <div class="border-b border-gray-200 px-6">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 metric-tab-active" data-content="lead-def">
+                                Definición
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="lead-imp">
+                                Importancia
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="lead-mej">
+                                Mejora
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="metric-content" id="lead-def">
+                            <p>El tiempo total que tarda una tarea desde que se <strong>inicia</strong> (se mueve a la columna "En Curso") hasta que se <strong>termina</strong> (se mueve a "Hecho").</p>
+                        </div>
+                        <div class="metric-content hidden" id="lead-imp">
+                            <p>Mide la <strong>rapidez</strong> con la que el equipo entrega valor. Un <em>Lead Time</em> alto indica cuellos de botella.</p>
+                        </div>
+                        <div class="metric-content hidden" id="lead-mej">
+                            <p>Reducir el <em>Work In Progress</em> (WIP) ayuda directamente a reducir el <em>Lead Time</em>.</p>
+                        </div>
+                    </div>
+                </article>
+                
+                <article class="bg-white rounded-lg shadow-md border border-gray-200 flex flex-col">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-cyan-700">2. Cycle Time</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Tiempo de Ciclo</p>
+                    </div>
+                    <div class="border-b border-gray-200 px-6">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 metric-tab-active" data-content="cycle-def">
+                                Definición
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="cycle-imp">
+                                Importancia
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="cycle-mej">
+                                Mejora
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="metric-content" id="cycle-def">
+                            <p>El tiempo que tarda una tarea desde que se <strong>comienza el trabajo activo</strong> (por ejemplo, desde que entra en la fase de "Desarrollo") hasta que está lista para la entrega (sale de "Pruebas/Revisión").</p>
+                        </div>
+                        <div class="metric-content hidden" id="cycle-imp">
+                            <p>Mide la <strong>eficiencia del proceso de desarrollo</strong>. Es una métrica interna clave.</p>
+                        </div>
+                        <div class="metric-content hidden" id="cycle-mej">
+                            <p>Analizar los tiempos que pasa una tarea en la columna de "Pruebas/Revisión" ayuda a identificar si se necesita automatizar pruebas o mejorar la calidad del código.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg shadow-md border border-gray-200 flex flex-col">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-cyan-700">3. Work In Progress (WIP)</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Trabajo en Curso</p>
+                    </div>
+                    <div class="border-b border-gray-200 px-6">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 metric-tab-active" data-content="wip-def">
+                                Definición
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="wip-imp">
+                                Importancia
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="wip-mej">
+                                Mejora
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="metric-content" id="wip-def">
+                            <p>El número de tareas en estado "En Curso" o en cualquier columna activa antes de "Hecho". Se establece un límite estricto (e.g., WIP Limit = 2 en el MVP anterior).</p>
+                        </div>
+                        <div class="metric-content hidden" id="wip-imp">
+                            <p>El indicador más importante de Kanban. Limitar el WIP obliga al equipo a <strong>enfocarse en terminar</strong> lo que ya se empezó antes de comenzar nuevas tareas, mejorando la calidad y reduciendo el <em>Lead Time</em>.</p>
+                        </div>
+                        <div class="metric-content hidden" id="wip-mej">
+                            <p>Si el equipo constantemente alcanza el límite de WIP y necesita empezar algo nuevo, puede ser una señal para reevaluar la capacidad o el flujo de trabajo.</p>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="bg-white rounded-lg shadow-md border border-gray-200 flex flex-col">
+                    <div class="p-6">
+                        <h3 class="text-2xl font-semibold text-cyan-700">4. Throughput</h3>
+                        <p class="text-sm text-gray-500 uppercase tracking-wider">Rendimiento</p>
+                    </div>
+                    <div class="border-b border-gray-200 px-6">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 metric-tab-active" data-content="thru-def">
+                                Definición
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="thru-imp">
+                                Importancia
+                            </button>
+                            <button class="metric-tab whitespace-nowrap py-3 px-1 border-b-2 font-medium text-sm border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" data-content="thru-mej">
+                                Mejora
+                            </button>
+                        </nav>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <div class="metric-content" id="thru-def">
+                            <p>El número de tareas (Historias de Usuario o Tareas Diarias) que se completan y se mueven a la columna "Hecho" en un período de tiempo determinado (por ejemplo, por día o por semana).</p>
+                        </div>
+                        <div class="metric-content hidden" id="thru-imp">
+                            <p>Mide la <strong>capacidad de producción</strong> del equipo.</p>
+                        </div>
+                        <div class="metric-content hidden" id="thru-mej">
+                            <p>Un aumento constante en el <em>Throughput</em> con un <em>Lead Time</em> estable sugiere que el equipo está mejorando su eficiencia sin sacrificar la velocidad.</p>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+        
+        <!-- INICIO DE LA NUEVA SECCIÓN: TABLERO KANBAN INTERACTIVO -->
+        <section id="kanban-board-section" class="page-section hidden">
+            <div class="bg-white p-6 rounded-lg shadow-sm border border-gray-200 mb-8">
+                <h2 class="text-2xl font-semibold text-cyan-800 mb-3">Tablero de Tareas Kanban (Visualizador de Flujo)</h2>
+                <p class="text-lg text-gray-700">
+                    Utiliza este tablero interactivo para visualizar el flujo de trabajo del MVP. Las tareas se pueden arrastrar y soltar entre las columnas: Por Hacer, En Curso (con límite WIP), En Revisión y Terminado. Intenta mover más de 2 tareas a la columna "En Curso" para ver la restricción de WIP.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Columna 1: Por Hacer -->
+                <div id="todo-column" class="kanban-column bg-gray-100 p-4 rounded-lg shadow-inner min-h-[500px] transition-all duration-300" data-wip-limit="999">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 border-gray-300">Por Hacer (To Do)</h3>
+                    <div id="tasks-todo" class="task-container">
+                        <div class="kanban-card bg-white p-3 rounded-md shadow-md mb-3 cursor-move border-l-4 border-cyan-600" draggable="true" data-task-id="1">
+                            <p class="font-medium text-gray-900">🌐 Diseño del Esquema de Base de Datos</p>
+                            <p class="text-xs text-gray-500 mt-1">Asignado: Desarrollador Back-end</p>
+                        </div>
+                        <div class="kanban-card bg-white p-3 rounded-md shadow-md mb-3 cursor-move border-l-4 border-cyan-600" draggable="true" data-task-id="2">
+                            <p class="font-medium text-gray-900">💬 Definición de 5 Preguntas Frecuentes</p>
+                            <p class="text-xs text-gray-500 mt-1">Asignado: Tester QA</p>
+                        </div>
+                        <div class="kanban-card bg-white p-3 rounded-md shadow-md mb-3 cursor-move border-l-4 border-cyan-600" draggable="true" data-task-id="5">
+                            <p class="font-medium text-gray-900">🎨 Prototipo de Flujo de Ruta</p>
+                            <p class="text-xs text-gray-500 mt-1">Asignado: Diseñador UX/UI</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 2: En Curso (WIP 2) -->
+                <div id="inprogress-column" class="kanban-column bg-yellow-100 p-4 rounded-lg shadow-inner min-h-[500px] transition-all duration-300" data-wip-limit="2">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 border-gray-300">En Curso (WIP <span id="wip-count-inprogress-column">1</span>/2)</h3>
+                    <div id="tasks-inprogress" class="task-container">
+                        <div class="kanban-card bg-white p-3 rounded-md shadow-md mb-3 cursor-move border-l-4 border-yellow-600" draggable="true" data-task-id="3">
+                            <p class="font-medium text-gray-900">📱 Desarrollo de la Pantalla de Inicio y Log-in</p>
+                            <p class="text-xs text-gray-500 mt-1">Asignado: Desarrollador Front-end</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: En Revisión -->
+                <div id="review-column" class="kanban-column bg-blue-100 p-4 rounded-lg shadow-inner min-h-[500px] transition-all duration-300" data-wip-limit="999">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 border-gray-300">En Revisión (Review)</h3>
+                    <div id="tasks-review" class="task-container">
+                        <div class="kanban-card bg-white p-3 rounded-md shadow-md mb-3 cursor-move border-l-4 border-blue-600" draggable="true" data-task-id="4">
+                            <p class="font-medium text-gray-900">🗺️ Integración de la API de Geolocalización</p>
+                            <p class="text-xs text-gray-500 mt-1">Asignado: Desarrollador Back-end</p>
+                        </div>
+                    </div>
+                </div>
+
+               
+                <div id="done-column" class="kanban-column bg-green-100 p-4 rounded-lg shadow-inner min-h-[500px] transition-all duration-300" data-wip-limit="999">
+                    <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 border-gray-300">Terminado (Done)</h3>
+                    <div id="tasks-done" class="task-container">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+       
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-400 mt-16 py-8">
+        <div class="container mx-auto max-w-6xl text-center">
+            <p>&copy; 2025 TechSolutions. Aplicación interactiva de gestión de proyectos.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            const navLinks = document.querySelectorAll('.nav-link');
+            const pageSections = document.querySelectorAll('.page-section');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    const targetId = link.getAttribute('data-target');
+                    
+                    pageSections.forEach(section => {
+                        if (section.id === targetId) {
+                            section.classList.remove('hidden');
+                        } else {
+                            section.classList.add('hidden');
+                        }
+                    });
+
+                    navLinks.forEach(navLink => navLink.classList.remove('nav-link-active'));
+                    link.classList.add('nav-link-active');
+                });
+            });
+
+            const sprintTabs = document.querySelectorAll('.sprint-tab');
+            const sprintDetails = document.querySelectorAll('.sprint-details');
+
+            sprintTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetId = tab.getAttribute('data-target');
+
+                    sprintDetails.forEach(detail => {
+                        if (detail.id === targetId) {
+                            detail.classList.remove('hidden');
+                        } else {
+                            detail.classList.add('hidden');
+                        }
+                    });
+
+                    sprintTabs.forEach(sprintTab => sprintTab.classList.remove('sprint-tab-active'));
+                    tab.classList.add('sprint-tab-active');
+                });
+            });
+
+            const criteriaToggles = document.querySelectorAll('.criteria-toggle');
+
+            criteriaToggles.forEach(toggle => {
+                toggle.addEventListener('click', () => {
+                    const content = toggle.nextElementSibling;
+                    const isHidden = content.classList.contains('hidden');
+                    
+                    if (isHidden) {
+                        content.classList.remove('hidden');
+                        toggle.textContent = 'Ocultar Criterios de Aceptación -';
+                    } else {
+                        content.classList.add('hidden');
+                        toggle.textContent = 'Ver Criterios de Aceptación +';
+                    }
+                });
+            });
+
+            const metricTabs = document.querySelectorAll('.metric-tab');
+
+            metricTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const targetContentId = tab.getAttribute('data-content');
+                    const tabContainer = tab.closest('nav');
+                    const contentContainer = tab.closest('article').querySelector('.p-6.flex-grow');
+
+                    tabContainer.querySelectorAll('.metric-tab').forEach(t => t.classList.remove('metric-tab-active'));
+                    tab.classList.add('metric-tab-active');
+
+                    contentContainer.querySelectorAll('.metric-content').forEach(content => {
+                        if (content.id === targetContentId) {
+                            content.classList.remove('hidden');
+                        } else {
+                            content.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+
+            
+            const columns = document.querySelectorAll('.kanban-column');
+            const tasks = document.querySelectorAll('.kanban-card');
+
+            function updateWIPCount(columnId) {
+                const column = document.getElementById(columnId);
+                
+                if (column && columnId === 'inprogress-column') {
+                    const taskCount = column.querySelectorAll('.kanban-card').length;
+                    const wipLimit = parseInt(column.getAttribute('data-wip-limit'), 10);
+                    const wipCountSpan = document.getElementById(`wip-count-${columnId}`);
+                    
+                    if (wipCountSpan) {
+                        wipCountSpan.textContent = taskCount;
+                        if (taskCount > wipLimit) {
+                            wipCountSpan.classList.add('text-red-600', 'font-extrabold');
+                            column.classList.add('ring-4', 'ring-red-500'); 
+                        } else {
+                            wipCountSpan.classList.remove('text-red-600', 'font-extrabold');
+                            column.classList.remove('ring-4', 'ring-red-500');
+                        }
+                    }
+                }
+            }
+
+            
+            updateWIPCount('inprogress-column');
+            
+            tasks.forEach(task => {
+                task.addEventListener('dragstart', dragStart);
+                task.addEventListener('dragend', dragEnd);
+            });
+
+            columns.forEach(column => {
+                column.addEventListener('dragover', dragOver);
+                column.addEventListener('drop', drop);
+            });
+
+            let draggedItem = null;
+
+            function dragStart(e) {
+                draggedItem = this;
+                e.dataTransfer.effectAllowed = 'move';
+                e.dataTransfer.setData('text/plain', e.target.id);
+                setTimeout(() => {
+                    this.classList.add('opacity-40');
+                }, 0);
+            }
+
+            function dragEnd() {
+                this.classList.remove('opacity-40');
+                draggedItem = null;
+            }
+
+            function dragOver(e) {
+                e.preventDefault();
+                const wipLimit = parseInt(this.getAttribute('data-wip-limit'), 10);
+                const currentTasks = this.querySelectorAll('.kanban-card').length;
+
+                
+                if (this.id === 'inprogress-column' && draggedItem && !this.contains(draggedItem)) {
+                    if (currentTasks >= wipLimit) {
+                        
+                        this.classList.add('border-4', 'border-red-500', 'border-dashed');
+                        return;
+                    }
+                }
+                
+                this.classList.add('bg-gray-200');
+            }
+
+            function drop(e) {
+                e.preventDefault();
+                this.classList.remove('bg-gray-200');
+                this.classList.remove('border-red-500', 'border-dashed'); 
+
+                const targetColumn = this;
+                const sourceColumnId = draggedItem.parentNode.id.replace('tasks-', '');
+                const targetColumnId = targetColumn.id;
+
+                const wipLimit = parseInt(targetColumn.getAttribute('data-wip-limit'), 10);
+                const currentTasks = targetColumn.querySelectorAll('.kanban-card').length;
+
+                
+                if (targetColumnId === 'inprogress-column' && sourceColumnId !== 'inprogress-column' && currentTasks >= wipLimit) {
+                    
+                    return;
+                }
+                
+                
+                draggedItem.classList.remove('border-cyan-600', 'border-yellow-600', 'border-blue-600', 'border-green-600');
+                if (targetColumnId === 'todo-column') draggedItem.classList.add('border-cyan-600');
+                if (targetColumnId === 'inprogress-column') draggedItem.classList.add('border-yellow-600');
+                if (targetColumnId === 'review-column') draggedItem.classList.add('border-blue-600');
+                if (targetColumnId === 'done-column') draggedItem.classList.add('border-green-600');
+
+                targetColumn.querySelector('.task-container').appendChild(draggedItem);
+
+               
+                updateWIPCount(sourceColumnId + '-column'); 
+                updateWIPCount(targetColumnId); 
+            }
+
+            
+            columns.forEach(column => {
+                column.addEventListener('dragleave', () => {
+                    column.classList.remove('bg-gray-200');
+                    column.classList.remove('border-red-500', 'border-dashed');
+                });
+            });
+            // --- DIEGO VEGA TARE 8---
+
+        });
+    </script>
+</body>
+</html>
