@@ -6,7 +6,7 @@
     <title>Gestión Ágil: Plan y Métricas</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- DIEGO VEGA TAREA 8 -->
-    
+   
     <style>
         .nav-link-active {
             border-bottom-width: 4px;
@@ -213,6 +213,76 @@
                         </article>
                     </div>
                 </div>
+
+                <div id="sprint-3-content" class="sprint-details hidden">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Objetivo del Sprint: <span class="font-normal">Introducir el asistente online y mejorar la experiencia de usuario (UX) general.</span></h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 9: Asistente Online (Chatbot Básico)</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero un botón de chat flotante que me permita iniciar una conversación con un asistente para preguntas frecuentes (Asistente online).</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>El botón flotante es visible en todas las pantallas.</li>
+                                        <li>El chatbot responde a 5 preguntas frecuentes predefinidas.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 10: Optimización de Rendimiento</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero que la aplicación se cargue en menos de 3 segundos y que la actualización de rutas sea fluida y sin demoras notables.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>Lighthouse score de performance > 80.</li>
+                                        <li>Tiempo de carga inicial < 3s en 3G rápido.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 11: Notificaciones Push (Ubicación)</h4>
+                                <p class="text-gray-600 mt-2">Como usuario, quiero recibir una notificación push si un carro de alquiler entra en un radio de 500 metros de mi ubicación actual.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>La app solicita permiso para notificaciones y ubicación en segundo plano.</li>
+                                        <li>La notificación se dispara correctamente.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+
+                        <article class="bg-white rounded-lg shadow-md border border-gray-200 overflow-hidden">
+                            <div class="p-5">
+                                <h4 class="text-lg font-semibold text-cyan-700">HU 12: Diseño Responsivo para Tablets</h4>
+                                <p class="text-gray-600 mt-2">Como usuario de tablet, quiero que la interfaz se adapte correctamente al tamaño más grande de la pantalla sin distorsiones.</p>
+                            </div>
+                            <div class="px-5 pb-5">
+                                <button class="criteria-toggle text-sm font-medium text-cyan-600 hover:text-cyan-800">Ver Criterios de Aceptación +</button>
+                                <div class="criteria-content hidden mt-3 text-sm text-gray-700 bg-gray-50 p-3 rounded-md border">
+                                    <ul class="list-disc list-inside">
+                                        <li>La vista de mapa y los modales se escalan correctamente en tablets.</li>
+                                        <li>No hay elementos superpuestos o cortados.</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -405,7 +475,7 @@
                     </div>
                 </div>
 
-               
+                <!-- Columna 4: Terminado -->
                 <div id="done-column" class="kanban-column bg-green-100 p-4 rounded-lg shadow-inner min-h-[500px] transition-all duration-300" data-wip-limit="999">
                     <h3 class="text-lg font-bold text-gray-800 mb-4 border-b pb-2 border-gray-300">Terminado (Done)</h3>
                     <div id="tasks-done" class="task-container">
@@ -414,7 +484,7 @@
 
             </div>
         </section>
-       
+        <!-- FIN DE LA NUEVA SECCIÓN -->
 
     </main>
 
@@ -505,13 +575,13 @@
                 });
             });
 
-            
+            // --- Kanban Board Logic ---
             const columns = document.querySelectorAll('.kanban-column');
             const tasks = document.querySelectorAll('.kanban-card');
 
             function updateWIPCount(columnId) {
                 const column = document.getElementById(columnId);
-                
+                // Only track WIP count/limit for the 'inprogress-column'
                 if (column && columnId === 'inprogress-column') {
                     const taskCount = column.querySelectorAll('.kanban-card').length;
                     const wipLimit = parseInt(column.getAttribute('data-wip-limit'), 10);
@@ -594,7 +664,7 @@
                     return;
                 }
                 
-                
+               
                 draggedItem.classList.remove('border-cyan-600', 'border-yellow-600', 'border-blue-600', 'border-green-600');
                 if (targetColumnId === 'todo-column') draggedItem.classList.add('border-cyan-600');
                 if (targetColumnId === 'inprogress-column') draggedItem.classList.add('border-yellow-600');
@@ -603,7 +673,7 @@
 
                 targetColumn.querySelector('.task-container').appendChild(draggedItem);
 
-               
+                
                 updateWIPCount(sourceColumnId + '-column'); 
                 updateWIPCount(targetColumnId); 
             }
@@ -615,7 +685,7 @@
                     column.classList.remove('border-red-500', 'border-dashed');
                 });
             });
-            // --- DIEGO VEGA TARE 8---
+            // --- Diego Vega tarea 8 ---
 
         });
     </script>
